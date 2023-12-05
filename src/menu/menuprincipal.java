@@ -62,26 +62,26 @@ public class menuprincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel(nombre);
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBackground(new Color(0, 0, 0));
-		lblNewLabel.setBounds(645, 172, 160, 24);
-		contentPane.add(lblNewLabel);
+		JLabel lblNombre = new JLabel("Nombre: " + nombre);
+		lblNombre.setForeground(new Color(255, 255, 255));
+		lblNombre.setBounds(645, 175, 200, 24);
+		contentPane.add(lblNombre);
 		
-		JLabel lblNewLabel_1 = new JLabel("2023 - "+String.valueOf(id));
-		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setBounds(715, 172, 46, 14);
-		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Estudiante");
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setBounds(774, 172, 46, 14);
-		contentPane.add(lblNewLabel_2);
+		JLabel lblId = new JLabel("Matricula: 2023-" + String.valueOf(id));
+		lblId.setForeground(new Color(255, 255, 255));
+		lblId.setBounds(645, 200, 100, 14);
+		contentPane.add(lblId);
 		
-		JLabel lblNewLabel_3 = new JLabel(carrera);
-		lblNewLabel_3.setForeground(new Color(255, 255, 255));
-		lblNewLabel_3.setBounds(765, 197, 46, 14);
-		contentPane.add(lblNewLabel_3);
+		JLabel lblTipoEstudiante = new JLabel("Estudiante");
+		lblTipoEstudiante.setForeground(new Color(255, 255, 255));
+		lblTipoEstudiante.setBounds(645, 162, 100, 14);
+		contentPane.add(lblTipoEstudiante);
+		
+		JLabel lblCarrera = new JLabel("Carrera: " + carrera);
+		lblCarrera.setForeground(new Color(255, 255, 255));
+		lblCarrera.setBounds(645, 221, 200, 14);
+		contentPane.add(lblCarrera);
 		
 		JLabel lblNewLabel_5 = new JLabel("APGE");
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
@@ -89,10 +89,10 @@ public class menuprincipal extends JFrame {
 		lblNewLabel_5.setBounds(154, 40, 202, 149);
 		contentPane.add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_6 = new JLabel("Indice: ");
-		lblNewLabel_6.setForeground(new Color(255, 255, 255));
-		lblNewLabel_6.setBounds(645, 197, 46, 14);
-		contentPane.add(lblNewLabel_6);
+		JLabel lblIndice = new JLabel("Indice: ");
+		lblIndice.setForeground(new Color(255, 255, 255));
+		lblIndice.setBounds(645, 245, 100, 14);
+		contentPane.add(lblIndice);
 		
 		btnNewButton = new JButton("Ver Materias");
 		btnNewButton.addActionListener(new ActionListener() {
