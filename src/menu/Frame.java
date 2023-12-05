@@ -92,7 +92,8 @@ public class Frame extends JFrame {
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
-  
+                registro registroVentana = new registro();
+                registroVentana.setVisible(true);
             
                 
                 
@@ -138,10 +139,13 @@ public class Frame extends JFrame {
                      PreparedStatement pst = conexion.conectar().prepareStatement("select * from usuario where email =? and contraseña =?");
                      pst.setString(1, email);
                      pst.setString(2, pass);
+                    
 
                      ResultSet rs = pst.executeQuery();
                      if(rs.next()){
                         span.setText("El usuario existe"+rs.getString("nombre"));
+                         menuprincipal menu = new menuprincipal(rs.getString("nombre"),rs.getInt("id_usuario"), rs.getString("carrera"));
+                    menu.setVisible(true);
                      }else{
                         span.setText("El usuario no existe");
                      }

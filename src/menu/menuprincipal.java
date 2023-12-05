@@ -24,6 +24,11 @@ public class menuprincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JButton btnNewButton;
+	public String nombre;
+	public int id;
+	public String carrera;
+
+	
 
 	/**
 	 * Launch the application.
@@ -32,7 +37,7 @@ public class menuprincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					menuprincipal frame = new menuprincipal();
+					menuprincipal frame = new menuprincipal("hola",0,"");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +49,10 @@ public class menuprincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public menuprincipal() {
+	public menuprincipal(String nombre, int id, String carrera) {
+		this.nombre = nombre;
+		this.id = id;
+		this.carrera = carrera;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 861, 548);
 		contentPane = new JPanel();
@@ -54,23 +62,23 @@ public class menuprincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Nombre");
+		JLabel lblNewLabel = new JLabel(nombre);
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBackground(new Color(0, 0, 0));
-		lblNewLabel.setBounds(645, 172, 60, 14);
+		lblNewLabel.setBounds(645, 172, 160, 24);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("ID");
+		JLabel lblNewLabel_1 = new JLabel(String.valueOf(id));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setBounds(715, 172, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Rol");
+		JLabel lblNewLabel_2 = new JLabel("Estudiante");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setBounds(774, 172, 46, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Carrera");
+		JLabel lblNewLabel_3 = new JLabel(carrera);
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3.setBounds(765, 197, 46, 14);
 		contentPane.add(lblNewLabel_3);
