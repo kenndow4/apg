@@ -104,7 +104,7 @@ public class registro extends JFrame {
             		pst.executeUpdate();
             		
             		JOptionPane.showMessageDialog(null,"Conexion realizada con exito");
-            		menuprincipal menu = new menuprincipal("oo",0, "");
+            		menuprincipal menu = new menuprincipal("oo",0, "",0);
                     menu.setVisible(true);
             		
             		

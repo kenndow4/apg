@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2023 a las 21:55:51
+-- Tiempo de generación: 05-12-2023 a las 23:15:58
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -40,7 +40,9 @@ CREATE TABLE `calificacion` (
 --
 
 INSERT INTO `calificacion` (`id_calificacion`, `id_materia`, `id_estudiante`, `total`, `id_profesor`) VALUES
-(1, 5, 3, 20, 3);
+(1, 5, 3, 20, 3),
+(2, 7, 4, 85, 6),
+(3, 8, 4, 72, 5);
 
 -- --------------------------------------------------------
 
@@ -62,7 +64,9 @@ CREATE TABLE `materia` (
 
 INSERT INTO `materia` (`id_materia`, `nombre_materia`, `id_estudiante`, `horario`, `id_profesor`) VALUES
 (5, 'programacion', 3, '7:00AM', 4),
-(6, 'precalculo', 4, '2:00PM', 3);
+(6, 'precalculo', 4, '2:00PM', 3),
+(7, 'Etica', 4, '4:00PM', 6),
+(8, 'base de datos', 4, '7:15PM', 5);
 
 -- --------------------------------------------------------
 
@@ -83,7 +87,9 @@ CREATE TABLE `profesor` (
 
 INSERT INTO `profesor` (`id_profesor`, `nombre_profesor`, `email`, `contraseña`) VALUES
 (3, 'teresa alfeni', 'teresa@gmail.com', '12345'),
-(4, 'alberto juanez', 'alberto@gmail.com', '12345');
+(4, 'alberto juanez', 'alberto@gmail.com', '12345'),
+(5, 'rafael pedro julio', 'rafa@gmail.com', '123'),
+(6, 'motana campo', 'montana', '123');
 
 -- --------------------------------------------------------
 
@@ -117,7 +123,15 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `contraseña`, `carrera`) VALUES
 (3, 'juan jose pedro', 'j@gmail.com', '123', 'multimedia'),
-(4, 'maria alfa boned', 'maria@gmail.com', '123', 'software');
+(4, 'maria alfa boned', 'maria@gmail.com', '123', 'software'),
+(5, 'rene perez', 'rene@gmail.com', '1234', 'software'),
+(6, 'Billy jhon', 'billy@gmail.com', '1234', 'software'),
+(7, 'teresa jhon', 'teresa@gmail.com', '1234', 'software'),
+(8, 'jostin jhon', 'jostin@gmail.com', '1234', 'software'),
+(9, 'jose juan', 'juan@gmail.com', '1122', '1122'),
+(10, 'jose ramoz', 'joseramoz@gmail.com', '1122', '1122'),
+(11, 'keneo', 'k@gamil.com', '123', 'comboBoxChanged'),
+(12, 'kwu', 'u@gmail.com', '123', 'comboBoxChanged');
 
 --
 -- Índices para tablas volcadas
@@ -167,19 +181,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `calificacion`
 --
 ALTER TABLE `calificacion`
-  MODIFY `id_calificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_calificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `id_materia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_materia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `id_profesor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_profesor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `total`
@@ -191,7 +205,7 @@ ALTER TABLE `total`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas

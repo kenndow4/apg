@@ -19,6 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+
 import javax.swing.border.Border;
 import javax.swing.JComboBox;
 
@@ -143,8 +146,35 @@ public class Frame extends JFrame {
 
                      ResultSet rs = pst.executeQuery();
                      if(rs.next()){
+                        
+                         PreparedStatement pstt = conexion.conectar().prepareStatement("select total from calificacion where id_estudiante =?");
+                        pstt.setInt(1, rs.getInt("id_usuario"));
+                        ResultSet indice = pstt.executeQuery();
+                        
+                        // while (indice.next()) {
+                        //   rowCount++;
+                        // }
+                       
+                        
+                        int rowCount = 0;
+                        int sumaTotal = 0;
+                        while(indice.next()){
+                            int total = indice.getInt("total");
+                            rowCount++;
+                            sumaTotal += total;
+                        }
+                        float indFinal = sumaTotal / rowCount;
+                         System.out.println(indFinal);
+                         System.out.println(sumaTotal);
+                        // while(indice.next()){
+                        //     System.out.println(indice.getRow());
+                        //     for(int i=0; i<2; i++ ){
+                        //         System.out.println(indice.getInt("total")+indice.getInt("total"));
+                        //     }
+                        // }
+
                         span.setText("El usuario existe"+rs.getString("nombre"));
-                         menuprincipal menu = new menuprincipal(rs.getString("nombre"),rs.getInt("id_usuario"), rs.getString("carrera"));
+                         menuprincipal menu = new menuprincipal(rs.getString("nombre"),rs.getInt("id_usuario"), rs.getString("carrera"), indFinal);
                     menu.setVisible(true);
                      }else{
                         span.setText("El usuario no existe");

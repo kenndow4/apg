@@ -27,6 +27,7 @@ public class menuprincipal extends JFrame {
 	public String nombre;
 	public int id;
 	public String carrera;
+	public float indice;
 
 	
 
@@ -37,7 +38,7 @@ public class menuprincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					menuprincipal frame = new menuprincipal("hola",0,"");
+					menuprincipal frame = new menuprincipal("APGE",0,"",0);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,10 +50,11 @@ public class menuprincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public menuprincipal(String nombre, int id, String carrera) {
+	public menuprincipal(String nombre, int id, String carrera, float indice) {
 		this.nombre = nombre;
 		this.id = id;
 		this.carrera = carrera;
+		this.indice = indice;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 861, 548);
 		contentPane = new JPanel();
@@ -83,16 +85,16 @@ public class menuprincipal extends JFrame {
 		lblCarrera.setBounds(645, 221, 200, 14);
 		contentPane.add(lblCarrera);
 		
-		JLabel lblNewLabel_5 = new JLabel("APGE");
+		JLabel lblNewLabel_5 = new JLabel("Indice: "+ String.valueOf(indice));
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
-		lblNewLabel_5.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 57));
-		lblNewLabel_5.setBounds(154, 40, 202, 149);
+		lblNewLabel_5.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 37));
+		lblNewLabel_5.setBounds(154, 40, 252, 149);
 		contentPane.add(lblNewLabel_5);
 		
-		JLabel lblIndice = new JLabel("Indice: ");
-		lblIndice.setForeground(new Color(255, 255, 255));
-		lblIndice.setBounds(645, 245, 100, 14);
-		contentPane.add(lblIndice);
+		// JLabel lblIndice = new JLabel("Indice: " + String.valueOf(indice));
+		// lblIndice.setForeground(new Color(255, 255, 255));
+		// lblIndice.setBounds(645, 221, 220, 14);
+		// contentPane.add(lblIndice);
 		
 		btnNewButton = new JButton("Ver Materias");
 		btnNewButton.addActionListener(new ActionListener() {
