@@ -68,7 +68,7 @@ public class menuprincipal extends JFrame {
 		lblNewLabel.setBounds(645, 172, 160, 24);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel(String.valueOf(id));
+		JLabel lblNewLabel_1 = new JLabel("2023 - "+String.valueOf(id));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setBounds(715, 172, 46, 14);
 		contentPane.add(lblNewLabel_1);
