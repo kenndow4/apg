@@ -27,7 +27,7 @@ import usuario.Estudiante;
 
 import javax.swing.border.Border;
 import javax.swing.JComboBox;
-
+//a
 public class registro extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -38,6 +38,7 @@ public class registro extends JFrame {
     private JTextField txt_autentipassword;
     private Estudiante estudiante;
     private JButton SignUp = new JButton("SIGN UP");
+    JComboBox seleccionCarrera = new JComboBox();
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -88,32 +89,34 @@ public class registro extends JFrame {
         
         SignUp.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
         SignUp.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	try {
-            		
-            		String url = "jdbc:mysql://localhost:3306/apgee";
-            		String usuario = "root";
-            		String password = "";
-            		
-            		Connection cn = DriverManager.getConnection(url, usuario, password);
-            		PreparedStatement pst = cn.prepareStatement("INSERT INTO usuario(nombre, email, contraseña, carrera)VALUES(?,?,?,?)");
-            		pst.setString(1, txt_nombre.getText());
-            		pst.setString(2, txt_email.getText());
-            		pst.setString(3, txt_password.getText());
-            		pst.setString(4, txt_autentipassword.getText());
-            		pst.executeUpdate();
-            		
-            		JOptionPane.showMessageDialog(null,"Conexion realizada con exito");
-            		
-            		
-            		
-            	} catch(Exception e1) {
-            		
-            		JOptionPane.showMessageDialog(null,"Ha ocurrido un error");
-            		
-            		
-            	}
-            }
+        	public void actionPerformed(ActionEvent el) {
+        		
+        		if(txt_nombre.getText().isEmpty() || txt_email.getText().isEmpty() || txt_password.getText().isEmpty() || seleccionCarrera.getActionCommand().isEmpty()) {
+        		    JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios. Por favor, complete todos los campos.");
+        		} else {
+        		    // Los campos no están vacíos, ahora procedemos con la conexión y la inserción en la base de datos
+        		    try {
+        		        String url = "jdbc:mysql://localhost:3306/apgee";
+        		        String usuario = "root";
+        		        String password = "";
+
+        		        Connection cn = DriverManager.getConnection(url, usuario, password);
+        		        PreparedStatement pst = cn.prepareStatement("INSERT INTO usuario(nombre, email, contraseña, carrera) VALUES(?,?,?,?)");
+        		        pst.setString(1, txt_nombre.getText());
+        		        pst.setString(2, txt_email.getText());
+        		        pst.setString(3, txt_password.getText());
+        		        pst.setString(4, seleccionCarrera.getActionCommand());
+        		        pst.executeUpdate();
+
+        		        JOptionPane.showMessageDialog(null, "Registro realizado con éxito");
+
+        		    } catch (SQLException e1) {
+        		        JOptionPane.showMessageDialog(null, "Ha ocurrido un error al intentar registrar en la base de datos");
+        		        e1.printStackTrace(); 
+        		    }
+        		}
+
+        	}
         });
         SignUp.setForeground(new Color(255, 255, 255));
         SignUp.setBackground(new Color(255, 98, 99));
@@ -157,14 +160,14 @@ public class registro extends JFrame {
         txt_password.setBounds(40, 268, 274, 34);
         contentPane.add(txt_password);
         
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(10, 411, 140, 22);
-        contentPane.add(comboBox);
         
-        comboBox.addItem("Seleccionar Carrera");
-        comboBox.addItem("Software");
-        comboBox.addItem("Multimedia");
-        comboBox.addItem("Seguridad Informatica");
+        seleccionCarrera.setBounds(10, 411, 140, 22);
+        contentPane.add(seleccionCarrera);
+        
+        seleccionCarrera.addItem("Seleccionar Carrera");
+        seleccionCarrera.addItem("Software");
+        seleccionCarrera.addItem("Multimedia");
+        seleccionCarrera.addItem("Seguridad Informatica");
         
         JLabel lblNewLabel_1_1_1 = new JLabel("Confirm Password");
         lblNewLabel_1_1_1.setForeground(new Color(255, 182, 83));
