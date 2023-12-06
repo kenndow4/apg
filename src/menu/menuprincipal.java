@@ -105,45 +105,23 @@ public class menuprincipal extends JFrame {
 		btnNewButton.setBackground(new Color(0, 44, 83));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
-		btnNewButton.setBounds(28, 289, 185, 63);
+		btnNewButton.setBounds(300, 310, 185, 63);
 		contentPane.add(btnNewButton);
 		
 		JButton btnVerCalificaciones = new JButton("Consultar Calificacion");
 		btnVerCalificaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//boton consultar calificacion
 			}
 		});
 		btnVerCalificaciones.setBackground(new Color(0, 44, 83));
 		btnVerCalificaciones.setForeground(new Color(255, 255, 255));
 		btnVerCalificaciones.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 14));
-		btnVerCalificaciones.setBounds(28, 392, 185, 63);
+		btnVerCalificaciones.setBounds(28, 310, 185, 63);
 		contentPane.add(btnVerCalificaciones);
 		
-		JButton btnVerMaestros = new JButton("Ver Maestros");
-		btnVerMaestros.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//boton ver maestros
-			}
-		});
-		btnVerMaestros.setBackground(new Color(0, 44, 83));
-		btnVerMaestros.setForeground(new Color(255, 255, 255));
-		btnVerMaestros.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
-		btnVerMaestros.setBounds(291, 289, 185, 63);
-		contentPane.add(btnVerMaestros);
+
 		
-		JButton btnRetirarMaterias = new JButton("Retirar Materias");
-		btnRetirarMaterias.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				//boton retirar materia
-			}
-		});
-		btnRetirarMaterias.setBackground(new Color(0, 44, 83));
-		btnRetirarMaterias.setForeground(new Color(255, 255, 255));
-		btnRetirarMaterias.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
-		btnRetirarMaterias.setBounds(291, 392, 185, 63);
-		contentPane.add(btnRetirarMaterias);
+
 		
         JLabel lblNewLabel_4 = new JLabel("");
         ImageIcon icon = new ImageIcon(menuprincipal.class.getResource("/image/user-286.png"));
