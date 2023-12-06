@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.Font;
@@ -17,13 +18,18 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class menuprincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JButton btnNewButton;
+	private JButton verMaterias;
 	public String nombre;
 	public int id;
 	public String carrera;
@@ -96,17 +102,58 @@ public class menuprincipal extends JFrame {
 		// lblIndice.setBounds(645, 221, 220, 14);
 		// contentPane.add(lblIndice);
 		
-		btnNewButton = new JButton("Ver Materias");
-		btnNewButton.addActionListener(new ActionListener() {
+		verMaterias = new JButton("Ver Materias");
+		verMaterias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//boton ver materias
+			    String url = "jdbc:mysql://localhost:3306/apgee2";
+			    String usuario = "root";
+			    String password = "";
+
+			    try {
+			        // Establecer la conexión
+			        Connection conexion = DriverManager.getConnection(url, usuario, password);
+
+			        // Consulta con JOIN para obtener el nombre de la materia y del profesor
+			        String sql = "SELECT m.nombre_materia, p.nombre_profesor " +
+			                     "FROM materia m " +
+			                     "JOIN profesor p ON m.id_profesor = p.id_profesor " +
+			                     "WHERE m.id_estudiante = ?";
+			        PreparedStatement statement = conexion.prepareStatement(sql);
+			        statement.setInt(1, 4);
+
+			        // Ejecutar la consulta
+			        ResultSet resultSet = statement.executeQuery();
+
+			        StringBuilder materias = new StringBuilder("Materias del estudiante:\n");
+
+			        // Recorrer los resultados y agregar las materias y profesores al StringBuilder
+			        while (resultSet.next()) {
+			            String nombreMateria = resultSet.getString("nombre_materia");
+			            String nombreProfesor = resultSet.getString("nombre_profesor");
+
+			            materias.append(nombreMateria).append(" - Profesor: ").append(nombreProfesor).append("\n");
+			        }
+
+			        resultSet.close();
+			        statement.close();
+			        conexion.close();
+
+			        // Mostrar las materias en una ventana emergente
+			        JOptionPane.showMessageDialog(null, materias.toString(), "Materias del Estudiante", JOptionPane.INFORMATION_MESSAGE);
+
+			    } catch (SQLException ex) {
+			        ex.printStackTrace();
+			        JOptionPane.showMessageDialog(null, "Error al obtener la información de las materias", "Error", JOptionPane.ERROR_MESSAGE);
+			    }
 			}
+
+			
 		});
-		btnNewButton.setBackground(new Color(0, 44, 83));
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
-		btnNewButton.setBounds(300, 310, 185, 63);
-		contentPane.add(btnNewButton);
+		verMaterias.setBackground(new Color(0, 44, 83));
+		verMaterias.setForeground(new Color(255, 255, 255));
+		verMaterias.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
+		verMaterias.setBounds(300, 310, 185, 63);
+		contentPane.add(verMaterias);
 		
 		JButton btnVerCalificaciones = new JButton("Consultar Calificacion");
 		btnVerCalificaciones.addActionListener(new ActionListener() {
