@@ -2,11 +2,12 @@ package menu;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Conexion {
 
-	String bd = "apgee";
+	String bd = "apgee2";
 	String url = "jdbc:mysql://localhost:3306/";
 	String user = "root";
 	String password = "";
@@ -38,5 +39,10 @@ public class Conexion {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public PreparedStatement prepareStatement(String sql) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

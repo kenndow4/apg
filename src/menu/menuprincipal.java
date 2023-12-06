@@ -158,7 +158,50 @@ public class menuprincipal extends JFrame {
 		JButton btnVerCalificaciones = new JButton("Consultar Calificacion");
 		btnVerCalificaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			    String url = "jdbc:mysql://localhost:3306/apgee2";
+			    String usuario = "root";
+			    String password = "";
+
+			    try {
+			        // Establecer la conexión
+			        Connection conexion = DriverManager.getConnection(url, usuario, password);
+
+			        // Consulta para obtener el nombre de la materia y la calificación
+			        String sql = "SELECT m.nombre_materia, c.total " +
+			                     "FROM materia m " +
+			                     "JOIN calificacion c ON m.id_materia = c.id_materia " +
+			                     "WHERE m.id_estudiante = ?";
+			        PreparedStatement statement = conexion.prepareStatement(sql);
+			        statement.setInt(1, 4);
+
+			        // Ejecutar la consulta
+			        ResultSet resultSet = statement.executeQuery();
+
+			        StringBuilder calificaciones = new StringBuilder("Calificaciones del estudiante:\n");
+
+			        
+			        while (resultSet.next()) {
+			            String nombreMateria = resultSet.getString("nombre_materia");
+			            double calificacion = resultSet.getDouble("total");
+
+			            calificaciones.append(nombreMateria)
+			                .append(" - Calificación: ").append(calificacion)
+			                .append("\n");
+			        }
+
+			        resultSet.close();
+			        statement.close();
+			        conexion.close();
+
+			      
+			        JOptionPane.showMessageDialog(null, calificaciones.toString(), "Calificaciones del Estudiante", JOptionPane.INFORMATION_MESSAGE);
+
+			    } catch (SQLException ex) {
+			        ex.printStackTrace();
+			        JOptionPane.showMessageDialog(null, "Error al obtener la información de las calificaciones", "Error", JOptionPane.ERROR_MESSAGE);
+			    }
 			}
+
 		});
 		btnVerCalificaciones.setBackground(new Color(0, 44, 83));
 		btnVerCalificaciones.setForeground(new Color(255, 255, 255));
