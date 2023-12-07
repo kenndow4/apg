@@ -15,7 +15,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -83,7 +85,7 @@ public class Frame extends JFrame {
         // Crear Border redondeado
         
 
-        textField_1 = new JTextField();
+        textField_1 = new JPasswordField();
         textField_1.setForeground(new Color(0, 0, 0));
         textField_1.setBounds(40, 223, 274, 34);
 
@@ -133,7 +135,10 @@ public class Frame extends JFrame {
                 if(email.equals("") || pass.equals("")){
                      span.setText("Hay campos vacio");
         
-                }else{
+                }else if(!textField.getText().contains("@") || !textField.getText().contains(".")){
+                	
+                	JOptionPane.showMessageDialog(null, "Correo invalido");
+                }else {
                    try{
                      Conexion conexion = new Conexion();
                      conexion.conectar();

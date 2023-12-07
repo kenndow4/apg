@@ -223,7 +223,7 @@ public class menuprincipal extends JFrame {
         JPanel panel = new JPanel();
         panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
         panel.setBackground(new Color(0, 21, 47));
-        panel.setBounds(635, 28, 185, 133);
+                panel.setBounds(635, 28, 185, 133);
         contentPane.add(panel);
         
         JButton btnNewButton_1 = new JButton("Exit");
